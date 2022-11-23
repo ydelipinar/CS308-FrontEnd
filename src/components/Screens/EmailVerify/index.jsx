@@ -11,7 +11,7 @@ const EmailVerify = () => {
   useEffect(() => {
     const verifyEmailUrl = async () => {
       try {
-        const url = `http://localhost:5000/users/${param.id}/verify/${param.token}`;
+        const url = `https://cs308-api.onrender.com/users/${param.id}/verify/${param.token}`;
         const { data } = await axios.get(url);
         console.log(data);
       } catch (error) {
