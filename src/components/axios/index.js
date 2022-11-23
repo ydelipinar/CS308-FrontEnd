@@ -2,7 +2,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 
 const HTTP = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://cs308-api.onrender.com",
 });
 
 export const handleGoogle = async (data) => {
