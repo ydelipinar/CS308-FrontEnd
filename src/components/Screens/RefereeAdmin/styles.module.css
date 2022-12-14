@@ -4,9 +4,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 600px;
-  height: 450px;
+  height: 660px;
   display: flex;
   box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .login_form_container {
@@ -17,13 +19,14 @@
 
 .left2 {
   width: 600px;
-  height: 450px;
+  height: 650px;
   flex: 2;
   align-items: center;
   justify-content: center;
   background-color: #16213e;
   border-radius: 5px;
   padding: 10px;
+  margin-bottom: 50px;
 }
 
 .form_container {
@@ -52,7 +55,7 @@
   outline: none;
   background-color: #e94560;
   border-radius: 5px;
-  width: 400px;
+  width: 370px;
   height: 40px;
   margin: 10px;
   justify-content: center;
@@ -70,8 +73,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 750px;
-  height: 500px;
+  width: 600px;
+  height: 450px;
   display: flex;
   box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
 }
@@ -109,7 +112,7 @@
 
 .wrapper .right .info,
 .wrapper .right .projects {
-  margin-bottom: 90px;
+  margin-bottom: 25px;
 }
 
 .wrapper .right .info h3,
@@ -119,6 +122,7 @@
   border-bottom: 1px solid #e0e0e0;
   color: #353c4e;
   text-transform: uppercase;
+  letter-spacing: 5px;
 }
 
 .wrapper .right .info_data,
@@ -141,7 +145,7 @@
 .wrapper .right .info_data .data p,
 .wrapper .right .projects_data .data p {
   font-size: 13px;
-  margin-bottom: 2px;
+  margin-bottom: 10px;
   color: #919aa3;
 }
 
@@ -169,3 +173,18 @@
 }
 
 /* PROFILE CARD CSS END */
+
+
+@media (max-width: 1112px){
+  .login_container {
+    
+    margin-top: 100px;
+  }
+}
+
+@media (max-width: 580px){
+  .login_container {
+    
+    margin-top: 140px;
+  }
+}
