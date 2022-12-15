@@ -10,7 +10,7 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = `https://cs308-api.onrender.com/password-reset`;
+      const url = `http://localhost:5000/password-reset`;
       const { data } = await axios.post(url, { email });
       setMsg(data.message);
       setError("");
