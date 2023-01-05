@@ -10,12 +10,12 @@ export default function Navbar() {
       </Link>
       <ul>
         {user && <CustomLink to="/matches">Matches</CustomLink>}
+        {user && <CustomLink to="/teams">Teams</CustomLink>}
         {user && <CustomLink to="/referees">Referees</CustomLink>}
 
      
         { <CustomLink to="/standing">Standings</CustomLink>}
 
-        {user && user.userType ==='ADMIN' && <CustomLink to="/addreferee">Add Referee</CustomLink>}
 
         {user && user.userType ==='ADMIN' && <CustomLink to="/refereePanel">RefereePanel</CustomLink>}
 

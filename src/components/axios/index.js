@@ -5,7 +5,6 @@ const HTTP = axios.create({
   baseURL: "https://cs308-api.onrender.com",
 });
 
-
 /**
  * Gets user information from google by decyrpting the credentials coming from users gmail
  * @param {Array} credentialResponse - Array that contains the encrypted credentials of the user
@@ -113,7 +112,6 @@ export const requestMatches = async (
   roundName
 ) => {
   try {
-    console.log(process.env);
     const { data } = await axios.get(
       "https://v3.football.api-sports.io/fixtures",
       {
@@ -147,6 +145,69 @@ export const requestMatches = async (
 
     console.log(matches);
     return matches;
+  } catch (error) {
+    console.log("ERROR");
+    return [];
+  }
+};
+
+export const requestOneMatch = async (matchId) => {
+  try {
+    const { data } = await axios.get(
+      "https://v3.football.api-sports.io/fixtures",
+      {
+        params: { id: matchId },
+        headers: {
+          "x-rapidapi-host": process.env.REACT_APP_FOOTBALL_API_HOST,
+          "x-rapidapi-key": process.env.REACT_APP_FOOTBALL_API_KEY,
+        },
+      }
+    );
+
+    console.log(JSON.stringify(data.response[0]));
+    return data.response[0];
+  } catch (error) {
+    console.log("ERROR");
+    return [];
+  }
+};
+
+export const requestTeams = async (leagueId, seasonId) => {
+  try {
+    const { data } = await axios.get(
+      "https://v3.football.api-sports.io/teams",
+      {
+        params: { league: leagueId, season: seasonId },
+        headers: {
+          "x-rapidapi-host": process.env.REACT_APP_FOOTBALL_API_HOST,
+          "x-rapidapi-key": process.env.REACT_APP_FOOTBALL_API_KEY,
+        },
+      }
+    );
+
+    console.log(JSON.stringify(data.response));
+    return data.response;
+  } catch (error) {
+    console.log("ERROR");
+    return [];
+  }
+};
+
+export const requestSquads = async (teamId) => {
+  try {
+    const { data } = await axios.get(
+      "https://v3.football.api-sports.io/players/squads",
+      {
+        params: { team: teamId },
+        headers: {
+          "x-rapidapi-host": process.env.REACT_APP_FOOTBALL_API_HOST,
+          "x-rapidapi-key": process.env.REACT_APP_FOOTBALL_API_KEY,
+        },
+      }
+    );
+
+    console.log(JSON.stringify(data.response[0]));
+    return data.response[0];
   } catch (error) {
     console.log("ERROR");
     return [];
@@ -248,8 +309,33 @@ export const removeDislike = async (id, user) => {
 
   return res;
 };
-export const addReport = async (id,user) => {
-  const { data: res } = await HTTP.put(`/review/report`, {id,user});
+export const addReport = async (id, user) => {
+  const { data: res } = await HTTP.put(`/review/report`, { id, user });
 
   return res;
 };
+
+export const deleteReview = async (id) => {
+  const { data: res } = await HTTP.delete(`/review/delete/${id}`);
+
+  return res;
+};
+
+export const updateReview = async (data) => {
+  const { data: res } = await HTTP.put(`/review/update/${data.id}`, {rating: data.rating, comment: data.comment});
+  return res
+};
+export const getallReview = async () => {
+  const { data: res } = await HTTP.get(`/review/getallreview`);
+  return res.review;
+};
+export const getUserDetails = async (id) => {
+  
+  const { data: res } = await HTTP.get(`/users/${id}`);
+  return res;
+};
+export const getallReviewByUserId = async (id) => {
+  const { data: res } = await HTTP.get(`/review/${id}`);
+  return res;
+};
+
